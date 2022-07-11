@@ -1,6 +1,8 @@
 import cv2
 import mediapipe as mp
 
+from constants import *
+
 
 class HandDetector:
 
@@ -32,7 +34,8 @@ class HandDetector:
             print(f"Player 1: {self.player1}\nPlayer 2: {self.player2}")
 
         # Display the image
-        cv2.line(img, (image_width//2, 0), (image_width//2, image_height), (255, 0, 255))
-        cv2.imshow('Pong Controls', cv2.flip(img, 1))
+        if SHOW_CAMERA:
+            cv2.line(img, (image_width//2, 0), (image_width//2, image_height), (255, 0, 255))
+            cv2.imshow('Pong Controls', cv2.flip(img, 1))
 
         return self.player1, self.player2

@@ -57,7 +57,7 @@ class Pong:
             # Check if ball hit the paddle
             if pygame.sprite.collide_mask(self.ball, self.p1) or pygame.sprite.collide_mask(self.ball, self.p2):
                 self.ball.dirX *= -1
-                self.ball.speed = [random.randint(4, 8), random.randint(-8, 8)]
+                self.ball.speed = [random.randint(40, 80), random.randint(-8, 8)]
             else:
                 if self.ball.getPosition()[0] <= 0:
                     self.p1Score += 1
@@ -81,6 +81,7 @@ class Pong:
 
             pygame.display.flip()
             self.clock.tick(60)
+            print(self.clock.get_fps())
 
     def moveUp(self, player: int) -> None:
         self.players[player].newPaddlePos(self.players[player].rect.y+PADDLE_SPEED)
